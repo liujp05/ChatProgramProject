@@ -1,4 +1,4 @@
-package com.imooc.pojo;
+package com.jpliu.project.pojo;
 
 import java.util.Date;
 import javax.persistence.*;
@@ -14,6 +14,9 @@ public class FriendsRequest {
     @Column(name = "accept_user_id")
     private String acceptUserId;
 
+    /**
+     * 发送请求的事件
+     */
     @Column(name = "request_date_time")
     private Date requestDateTime;
 
@@ -60,14 +63,18 @@ public class FriendsRequest {
     }
 
     /**
-     * @return request_date_time
+     * 获取发送请求的事件
+     *
+     * @return request_date_time - 发送请求的事件
      */
     public Date getRequestDateTime() {
         return requestDateTime;
     }
 
     /**
-     * @param requestDateTime
+     * 设置发送请求的事件
+     *
+     * @param requestDateTime 发送请求的事件
      */
     public void setRequestDateTime(Date requestDateTime) {
         this.requestDateTime = requestDateTime;

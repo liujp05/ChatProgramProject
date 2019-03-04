@@ -1,4 +1,4 @@
-package com.imooc.utils;
+package com.jpliu.project.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -19,7 +19,7 @@ public class MD5Utils {
 
 	public static void main(String[] args) {
 		try {
-			String md5 = getMD5Str("imooc");
+			String md5 = getMD5Str("salt");
 			System.out.println(md5);
 		} catch (Exception e) {
 			e.printStackTrace();

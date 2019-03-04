@@ -1,11 +1,17 @@
 package com.jpliu.project.mapper;
 
 import com.jpliu.project.pojo.Users;
+import com.jpliu.project.pojo.vo.FriendRequestVO;
+import com.jpliu.project.pojo.vo.MyFriendsVO;
 import com.jpliu.project.utils.MyMapper;
 
-public interface UsersMapper extends MyMapper<Users> {
-    //自己测试使用
-    public void updateUserImageFace(Users user);
+import java.util.List;
 
-    public Users selectUserById(String userId);
+public interface UsersMapperCustom extends MyMapper<Users> {
+
+    public List<FriendRequestVO> queryFriendRequestList(String acceptUserId);
+
+    public List<MyFriendsVO> queryMyFriends(String userId);
+
+    public void batchUpdateMsgSigned(List<String> msgIdList);
 }

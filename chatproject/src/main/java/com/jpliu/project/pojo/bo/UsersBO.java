@@ -1,45 +1,26 @@
 package com.jpliu.project.pojo.bo;
 
-public class UsersVO {
+public class UsersBO {
 
 
-    private String id;
-    private String username;
-    private String faceImage;
-    private String faceImageBig;
+    private String userId;
+    private String faceData;
     private String nickname;
-    private String qrcode;
 
-    public String getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFaceData() {
+        return faceData;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getFaceImage() {
-        return faceImage;
-    }
-
-    public void setFaceImage(String faceImage) {
-        this.faceImage = faceImage;
-    }
-
-    public String getFaceImageBig() {
-        return faceImageBig;
-    }
-
-    public void setFaceImageBig(String faceImageBig) {
-        this.faceImageBig = faceImageBig;
+    public void setFaceData(String faceData) {
+        this.faceData = faceData;
     }
 
     public String getNickname() {
@@ -48,13 +29,5 @@ public class UsersVO {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
-    }
-
-    public String getQrcode() {
-        return qrcode;
-    }
-
-    public void setQrcode(String qrcode) {
-        this.qrcode = qrcode;
     }
 }

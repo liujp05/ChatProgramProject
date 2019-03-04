@@ -1,32 +1,41 @@
-package com.jpliu.netty.websocket;
+package com.jpliu.project.netty;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WebSocketServer {
 
-    public static void main(String[] args) {
+    private static class SingletionWebSocketServer {
+        static final WebSocketServer instance = new WebSocketServer();
 
-        EventLoopGroup mainGroup = new NioEventLoopGroup();
-        EventLoopGroup subGroup = new NioEventLoopGroup();
+    }
 
-        try {
-            ServerBootstrap server = new ServerBootstrap();
-            server.group(mainGroup, subGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .childHandler(new WebSocketInitalizer());
+    public static WebSocketServer getInstance() {
+        return SingletionWebSocketServer.instance;
+    }
 
-            ChannelFuture channelFuture = server.bind(8088).sync();
+    private EventLoopGroup mainGroup;
+    private EventLoopGroup subGroup;
+    private ServerBootstrap server;
+    private ChannelFuture channelFuture;
 
-            channelFuture.channel().closeFuture().sync();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            mainGroup.shutdownGracefully();
-            subGroup.shutdownGracefully();
-        }
+    public WebSocketServer() {
+        mainGroup = new NioEventLoopGroup();
+        subGroup = new NioEventLoopGroup();
+        server = new ServerBootstrap();
+        server.group(mainGroup, subGroup)
+                .channel(NioServerSocketChannel.class)
+                .childHandler(new WebSocketInitalizer());
+    }
+
+
+    public void start() {
+        this.channelFuture = server.bind(8088);
+        System.err.println("netty WebSocket server 启动完毕...");
     }
 }

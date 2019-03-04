@@ -1,4 +1,4 @@
-package com.imooc;
+package com.jpliu.project;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/header.css" />
+		<link rel="stylesheet" href="fonticon/iconfont.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+
+			mui.plusReady(function() {
+				plus.navigator.setStatusBarStyle("light");
+				plus.navigator.setStatusBarBackground("#C9394A");
+			});
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav title">
+			<h1 class="mui-title title-color" id="chat_title"><b>聊天室</b></h1>
+		</header>
+
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" tabindex="0">
+				<span class="mui-icon iconfont">&#xe729</span>
+				<span class="mui-tab-label">聊天室</span>
+			</a>
+			<a class="mui-tab-item" tabindex="1">
+				<span class="mui-icon mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">通讯录</span>
+			</a>
+			<a class="mui-tab-item" tabindex="2">
+				<span class="mui-icon iconfont">&#xe644</span>
+				<span class="mui-tab-label">发现</span>
+			</a>
+			<a class="mui-tab-item" tabindex="3">
+				<span class="mui-icon iconfont">&#xe625</span>
+				<span class="mui-tab-label">我</span>
+			</a>
+		</nav>
+
+		<script type="text/javascript">
+			var chatProjectArray = [{
+					pageId: "chatlist.html",
+					pageUrl: "chatlist.html"
+				},
+				{
+					pageId: "contact.html",
+					pageUrl: "contact.html"
+				},
+				{
+					pageId: "discover.html",
+					pageUrl: "discover.html"
+				},
+				{
+					pageId: "me.html",
+					pageUrl: "me.html"
+				}
+			];
+			var chatProjectStyle = {
+				top: "44px",
+				bottom: "50px"
+			};
+
+			mui.plusReady(function() {
+
+				//禁止返回到 登录页面
+				mui.back = function() {
+					return false;
+				};
+				//对网络连接 进行事件监听
+				netChangeSwitch();
+
+				//获取当前的webview对象
+				var indexWebview = plus.webview.currentWebview();
+
+				//向当前的主页webview追加4张子页的webview对象
+				for(var i = 0; i < chatProjectArray.length; i++) {
+					var chatProjectPage = plus.webview.create(chatProjectArray[i].pageUrl, chatProjectArray[i].pageId, chatProjectStyle);
+					//隐藏webview窗口
+					chatProjectPage.hide();
+
+					//追加每一个子页面到当前的主页面
+					indexWebview.append(chatProjectPage);
+				}
+
+				plus.webview.show(chatProjectArray[0].pageId);
+
+				//批量绑定tap事件，展示不同的页面
+				mui(".mui-bar-tab").on("tap", "a", function() {
+					var tabIndex = this.getAttribute("tabindex");
+					//显示点击的tab选项所对应的页面
+					plus.webview.show(chatProjectArray[tabIndex].pageId, "fade-in", 200);
+
+					//隐藏其他的不需要的页面
+					for(var i = 0; i < chatProjectArray.length; i++) {
+						if(i != tabIndex) {
+							plus.webview.hide(chatProjectArray[i].pageId, "fade-out", 200);
+						}
+
+					}
+				});
+				//延时加载
+				setTimeout("initData()", "1000");
+			});
+
+			//监听网络状态更改
+			function netChangeSwitch() {
+				document.addEventListener("netchange", function() {
+					//网络状态获取和判断
+					var connectionStatus = plus.networkinfo.getCurrentType();
+					if(connectionStatus != 0 && connectionStatus != 1) {
+						//重新打开网络连接
+						var chat_title = document.getElementById("chat_title");
+						chat_title.innerHTML = "<b>聊天室</b>"
+					} else {
+						//关闭网络连接
+						var chat_title = document.getElementById("chat_title");
+						chat_title.innerHTML = "<b>聊天室(未连接)</b>"
+					}
+				});
+			}
+
+			//预加载
+			function initData() {
+				var chatlist = plus.webview.getWebviewById("chatlist.html");
+				mui.fire(chatlist, "refresh");
+				var me = plus.webview.getWebviewById("me.html");
+				mui.fire(me, "refresh");
+			}
+		</script>
+	</body>
+
+</html>

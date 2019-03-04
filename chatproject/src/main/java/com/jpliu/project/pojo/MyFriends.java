@@ -1,4 +1,4 @@
-package com.imooc.pojo;
+package com.jpliu.project.pojo;
 
 import javax.persistence.*;
 
@@ -7,9 +7,15 @@ public class MyFriends {
     @Id
     private String id;
 
+    /**
+     * 用户id
+     */
     @Column(name = "my_user_id")
     private String myUserId;
 
+    /**
+     * 用户的好友id
+     */
     @Column(name = "my_friend_user_id")
     private String myFriendUserId;
 
@@ -28,28 +34,36 @@ public class MyFriends {
     }
 
     /**
-     * @return my_user_id
+     * 获取用户id
+     *
+     * @return my_user_id - 用户id
      */
     public String getMyUserId() {
         return myUserId;
     }
 
     /**
-     * @param myUserId
+     * 设置用户id
+     *
+     * @param myUserId 用户id
      */
     public void setMyUserId(String myUserId) {
         this.myUserId = myUserId;
     }
 
     /**
-     * @return my_friend_user_id
+     * 获取用户的好友id
+     *
+     * @return my_friend_user_id - 用户的好友id
      */
     public String getMyFriendUserId() {
         return myFriendUserId;
     }
 
     /**
-     * @param myFriendUserId
+     * 设置用户的好友id
+     *
+     * @param myFriendUserId 用户的好友id
      */
     public void setMyFriendUserId(String myFriendUserId) {
         this.myFriendUserId = myFriendUserId;

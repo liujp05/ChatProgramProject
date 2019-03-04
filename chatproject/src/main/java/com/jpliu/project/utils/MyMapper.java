@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package com.imooc.utils;
+package com.jpliu.project.utils;
 
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;

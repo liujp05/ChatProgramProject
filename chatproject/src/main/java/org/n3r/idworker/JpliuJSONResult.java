@@ -1,4 +1,4 @@
-package com.jpliu.project.utils;
+package org.n3r.idworker;
 
 /**
  * @Description: 自定义响应数据结构

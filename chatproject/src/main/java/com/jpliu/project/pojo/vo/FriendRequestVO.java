@@ -1,63 +1,45 @@
 package com.jpliu.project.pojo.vo;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+/**
+ * 这是好友请求发送方的信息
+ */
+public class FriendRequestVO {
 
-public class UsersVO {
 
+    private String sendUserId;
+    private String sendUsername;
+    private String sendFaceImage;
+    private String sendNickname;
 
-    private String id;
-    private String username;
-    private String faceImage;
-    private String faceImageBig;
-    private String nickname;
-    private String qrcode;
-
-    public String getId() {
-        return id;
+    public String getSendUserId() {
+        return sendUserId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setSendUserId(String sendUserId) {
+        this.sendUserId = sendUserId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getSendUsername() {
+        return sendUsername;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setSendUsername(String sendUsername) {
+        this.sendUsername = sendUsername;
     }
 
-    public String getFaceImage() {
-        return faceImage;
+    public String getSendFaceImage() {
+        return sendFaceImage;
     }
 
-    public void setFaceImage(String faceImage) {
-        this.faceImage = faceImage;
+    public void setSendFaceImage(String sendFaceImage) {
+        this.sendFaceImage = sendFaceImage;
     }
 
-    public String getFaceImageBig() {
-        return faceImageBig;
+    public String getSendNickname() {
+        return sendNickname;
     }
 
-    public void setFaceImageBig(String faceImageBig) {
-        this.faceImageBig = faceImageBig;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getQrcode() {
-        return qrcode;
-    }
-
-    public void setQrcode(String qrcode) {
-        this.qrcode = qrcode;
+    public void setSendNickname(String sendNickname) {
+        this.sendNickname = sendNickname;
     }
 }

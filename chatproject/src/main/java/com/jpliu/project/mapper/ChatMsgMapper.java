@@ -1,7 +1,7 @@
-package com.imooc.mapper;
+package com.jpliu.project.mapper;
 
-import com.imooc.pojo.ChatMsg;
-import com.imooc.utils.MyMapper;
+import com.jpliu.project.pojo.ChatMsg;
+import com.jpliu.project.utils.MyMapper;
 
 public interface ChatMsgMapper extends MyMapper<ChatMsg> {
 }

@@ -1,63 +1,42 @@
 package com.jpliu.project.pojo.vo;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
-public class UsersVO {
+public class MyFriendsVO {
 
 
-    private String id;
-    private String username;
-    private String faceImage;
-    private String faceImageBig;
-    private String nickname;
-    private String qrcode;
+    private String friendUserId;
+    private String friendUsername;
+    private String friendFaceImage;
+    private String friendNickname;
 
-    public String getId() {
-        return id;
+    public String getFriendUserId() {
+        return friendUserId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFriendUserId(String friendUserId) {
+        this.friendUserId = friendUserId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFriendUsername() {
+        return friendUsername;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFriendUsername(String friendUsername) {
+        this.friendUsername = friendUsername;
     }
 
-    public String getFaceImage() {
-        return faceImage;
+    public String getFriendFaceImage() {
+        return friendFaceImage;
     }
 
-    public void setFaceImage(String faceImage) {
-        this.faceImage = faceImage;
+    public void setFriendFaceImage(String friendFaceImage) {
+        this.friendFaceImage = friendFaceImage;
     }
 
-    public String getFaceImageBig() {
-        return faceImageBig;
+    public String getFriendNickname() {
+        return friendNickname;
     }
 
-    public void setFaceImageBig(String faceImageBig) {
-        this.faceImageBig = faceImageBig;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getQrcode() {
-        return qrcode;
-    }
-
-    public void setQrcode(String qrcode) {
-        this.qrcode = qrcode;
+    public void setFriendNickname(String friendNickname) {
+        this.friendNickname = friendNickname;
     }
 }

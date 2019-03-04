@@ -1,4 +1,4 @@
-package com.imooc.enums;
+package com.jpliu.project.enums;
 
 /**
  * 

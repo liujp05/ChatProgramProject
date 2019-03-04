@@ -1,4 +1,4 @@
-package com.imooc.utils;
+package com.jpliu.project.utils;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
